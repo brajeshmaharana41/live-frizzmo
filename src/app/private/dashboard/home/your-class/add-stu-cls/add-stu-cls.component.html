@@ -1,0 +1,34 @@
+<div>
+    <div class="stu-brd">
+        <div class="pt-5">
+            <div class="pt-4">
+                <span class="title">Add Student</span>
+            </div>
+            <div class="pt-2 pb-1">
+                <span class="subtitle">Science Class -3 A</span>
+            </div>
+        </div>
+        <form [formGroup]="studentForm" (ngSubmit)="onClickSubmit(studentForm.value)">
+            <div class="pt-5">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Student Name</mat-label>
+                    <input matInput placeholder="Enter Name" formControlName="name">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Enter Email" formControlName="email" type="email">
+                    <mat-error *ngIf="studentError('email', 'required')">Enter Email Address</mat-error>
+                    <mat-error *ngIf="studentError('email', 'pattern')">Invalid Email Address</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="pt-4">
+                <div>
+                    <button mat-button class="btn btn-colrs" [disabled] = "!studentForm.valid" type="submit">Send Invite</button>
+                </div>
+                <div class="pt-3">
+                    <button mat-button class="btn btn-colr" mat-dialog-close>CLOSE</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
